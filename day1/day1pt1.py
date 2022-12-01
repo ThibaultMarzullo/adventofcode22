@@ -1,3 +1,4 @@
+import sys
 # Count how many calories worth of food each Elf is carrying
 
 def snacks(calorylist:str):
@@ -9,3 +10,18 @@ def snacks(calorylist:str):
     whogotit = sums.index(calories)
     print(f"\x1B[3mAnd they all looked upon Elf {whogotit} with hunger...\x1B[0m")
     return calories
+
+def main(wheresthelist='input.txt'):
+
+    with open(wheresthelist, 'r') as heresthelist:
+        snacklist = heresthelist.read()
+    
+    print(f"\x1B[3mFor he had... {snacks(snacklist)} calories!\x1B[0m")
+
+    return True
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        main(wheresthelist=sys.argv[1])
+    else:
+        main()
